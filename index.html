@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-3.2.1.min.js"></script>
+        <style>
+            body {
+                padding: 0px;
+                margin: 0px;
+                font-family: sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            .wrapper {
+                width: 1349px;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .leftdiv {
+                width: 400px;
+                min-height: 500px;
+                position: relative;
+            }
+            .points {
+                font-size: 150px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .centerdiv {
+                width: 549px;
+                min-height: 500px;
+            }
+            .rightdiv {
+                width: 400px;
+                min-height: 500px;
+                position: relative;
+            }
+            .controlbox {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .cb {
+                height: 100px;
+                width: 100%;
+            }
+            .topcb, .bottomcb {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .controlbutton {
+                height: 100px;
+                width: 100px;
+                border: none;
+                margin: auto;
+                transition: 0.3s;
+                background-color: coral;
+                color: white;
+                border-radius: 10px;
+                outline: none;
+            }
+            .controlbutton:hover {
+                box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+            }
+            .box {
+                width: 500px;
+                height: 500px;
+                box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+                margin: auto;
+                position: relative;
+                top: 20px;
+            }
+            .food {
+                width: 10px;
+                height: 10px;
+                background-color: red;
+                position: absolute;
+            }
+            .buttons {
+                width: 500px;
+                margin: 40px auto;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+                padding: 20px 0px;
+            }
+            .buttons button {
+                width: 27%;
+                border: none;
+                padding: 10px;
+                color: white;
+                background-color: chartreuse;
+                transition: 0.3s;
+                outline: none;
+                border-radius: 3px;
+            }
+            .buttons button:hover {
+                transform: scale(1.05);
+                background-color: #72df05;
+            }
+            .snake {
+                width: 10px;
+                height: 10px;
+                background-color: black;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+        <div class="fl leftdiv">
+            <span class="points">0</span>
+        </div>
+        <div class="fl centerdiv">
+            <div class="box">
+                <div class="snake snake4" style="top: 0px; left: 0px"></div>
+                <div class="snake snake3" style="top: 10px; left: 0px"></div>
+                <div class="snake snake2" style="top: 20px; left: 0px"></div>
+                <div class="snake snake1" style="top: 30px; left: 0px"></div>
+                <div class="snake snake0" style="top: 40px; left: 0px"></div>
+                <div class="food"></div>
+            </div>
+            <div class="buttons">
+                <button class="start">Start</button>
+                <button class="pause">Pause</button>
+                <button class="restart">Restart</button>
+            </div>
+        </div>
+        <div class="fl rightdiv">
+            <div class="controlbox">
+                <div class="cb topcb">
+                    <button class="controlbutton btop">Top</button>
+                </div>
+                <div class="cb middlecb">
+                    <button class="controlbutton bleft">Left</button>
+                    <button class="controlbutton bright" style="float: right;">Right</button>
+                </div>
+                <div class="cb bottomcb">
+                    <button class="controlbutton bbottom">Bottom</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script src="snake.js"></script>
+        <script>
+            $(".start").click(function() {
+                myGame.start();
+            })
+            $(".pause").click(function() {
+                myGame.pause();
+            })
+            $(".restart").click(function() {
+                myGame.restart();
+            })
+            $(".btop").click(function() {
+                if (mySnake.getDirection() != "bottom") {
+                    mySnake.setDirection("top");
+                } else {
+                    return;
+                }
+            })
+            $(".bright").click(function() {
+                if (mySnake.getDirection() != "left") {
+                    mySnake.setDirection("right");
+                } else {
+                    return;
+                }
+            })
+            $(".bbottom").click(function() {
+                if (mySnake.getDirection() != "top") {
+                    mySnake.setDirection("bottom");
+                } else {
+                    return;
+                }
+            })
+            $(".bleft").click(function() {
+                if (mySnake.getDirection() != "right") {
+                    mySnake.setDirection("left");
+                } else {
+                    return;
+                }
+            })
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
